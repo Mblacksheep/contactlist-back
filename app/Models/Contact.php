@@ -14,7 +14,7 @@ class Contact extends Model
         'contact_value'
     ];
 
-    public function contactType()
+    public function type()
     {
         return $this->hasOne(ContactType::class, 'id', 'contact_type_id');
     }
