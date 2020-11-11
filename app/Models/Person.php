@@ -9,4 +9,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Person extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'name'
+    ];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class, 'id', 'contact_owner_id');
+    }
 }
