@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
-
     public function create(Request $request)
     {
         if ($request->id) {
@@ -18,7 +17,7 @@ class ContactController extends Controller
         }
 
         $contact = new Contact();
-        $contact->contact_type_id = $request["contactTypeId"];
+        $contact->contact_type_id = $request["type"];
         $contact->contact_value = $request["value"];
         $contact->person_id = $request["personId"];
         $contact->save();
@@ -28,7 +27,7 @@ class ContactController extends Controller
 
     public function byId(Request $request)
     {
-        $contact = Contact::with('contactType')->find($request->id);
+        $contact = Contact::with('type')->find($request->id);
 
         return response(["contact" => $contact], 200);
     }
@@ -42,7 +41,7 @@ class ContactController extends Controller
 
     public function all()
     {
-        $contact = Contact::with('contactType')->orderBy('name', 'ASC')->get();
+        $contact = Contact::with('type')->orderBy('name', 'ASC')->get();
 
         return response(["contactList" => $contact], 200);
     }
