@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactTypeController;
 use App\Http\Controllers\PersonController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,6 @@ Route::get('contact/{id}',  [ContactController::class, 'byId']);
 Route::post('contact/create',  [ContactController::class, 'create']);
 Route::post('contact/delete',  [ContactController::class, 'delete']);
 
-Route::get('contact-type',  [ContactController::class, 'all']);
+Route::get('contact-type/list',  [ContactTypeController::class, 'all']);
 
 Route::post('balanced-brackets',  [BalancedBracketsController::class, 'balancedBrackets']);

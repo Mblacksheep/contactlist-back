@@ -27,16 +27,6 @@ class PersonController extends Controller
         $person->name = $request->name;
         $person->save();
 
-        // $contactList = [];
-        // foreach ($request->contactList as $key => $item) {
-        //     $contact = new Contact();
-        //     $contact->contact_type_id = $item["contactTypeId"];
-        //     $contact->contact_value = $item["value"];
-        //     $contact->person_id = $person->id;
-        //     $contactList[] = $contact;
-        // }
-        // $person->contacts()->saveMany($contactList);
-
         return response(["person" => $person], 200);
     }
 
