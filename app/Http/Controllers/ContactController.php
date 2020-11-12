@@ -16,7 +16,6 @@ class ContactController extends Controller
             $contact = new Contact();
         }
 
-        $contact = new Contact();
         $contact->contact_type_id = $request->type;
         $contact->contact_value = $request->value;
         $contact->person_id = $request->personId;
