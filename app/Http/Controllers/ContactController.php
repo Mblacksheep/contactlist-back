@@ -10,6 +10,15 @@ class ContactController extends Controller
 {
     public function create(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'type' => 'required',
+            'value' => 'required',
+            'personId' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response(["error" => $validator->errors()]);
+        }
+
         if ($request->id) {
             $contact = Contact::find($request->id);
         } else {
@@ -40,7 +49,7 @@ class ContactController extends Controller
 
     public function all()
     {
-        $contact = Contact::with('type')->orderBy('name', 'ASC')->get();
+        $contact = Contact::with('type')->orderBy('name', 'DESC')->get();
 
         return response(["contactList" => $contact], 200);
     }

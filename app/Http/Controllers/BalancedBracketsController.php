@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BalancedBracketsController extends Controller
 {
     public function balancedBrackets(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'value' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response(["error" => $validator->errors()]);
+        }
+
         $string = $request->value;
         $brackets = ["[]", "{}", "()"];
 
