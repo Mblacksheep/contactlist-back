@@ -12,16 +12,16 @@ class BalancedBracketsController extends Controller
         $brackets = ["[]", "{}", "()"];
 
         if (strlen($string) % 2 || $string == null) {
-            return "String is not valid.";
+            return response(["result" => false]);
         } else {
             $count = true;
             while ($count) {
                 $string = str_replace($brackets, "", $string, $count);
             }
             if (strlen($string) == 0) {
-                return "String is valid";
+                return response(["result" => true]);
             } else {
-                return "String is not valid";
+                return response(["result" => false]);
             }
         }
     }
