@@ -39,7 +39,7 @@ class PersonController extends Controller
 
     public function all()
     {
-        $person = Person::with('contacts')->get();
+        $person = Person::with('contacts')->orderBy('name', 'ASC')->get();
 
         return response(["peopleList" => $person], 200);
     }

@@ -49,7 +49,7 @@ class ContactController extends Controller
 
     public function all()
     {
-        $contact = Contact::with('type')->orderBy('name', 'DESC')->get();
+        $contact = Contact::with('type')->get();
 
         return response(["contactList" => $contact], 200);
     }
