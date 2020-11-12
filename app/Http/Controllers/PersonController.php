@@ -50,7 +50,7 @@ class PersonController extends Controller
     {
         $person = Person::with('contacts')->get();
 
-        return response(["personList" => $person], 200);
+        return response(["peopleList" => $person], 200);
     }
 
     public function delete(Request $request)
