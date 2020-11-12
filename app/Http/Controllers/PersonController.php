@@ -18,25 +18,26 @@ class PersonController extends Controller
             return response(["error" => $validator->errors()]);
         }
 
-        $person = new Person();
+        if ($request->id) {
+            $person = Person::find($request->id);
+        } else {
+            $person = new Person();
+        }
+
         $person->name = $request->name;
         $person->save();
 
-        $contactList = [];
-        foreach ($request->contactList as $key => $item) {
-            $contact = new Contact();
-            $contact->contact_type_id = $item["contactTypeId"];
-            $contact->contact_value = $item["value"];
-            $contact->person_id = $person->id;
-            $contactList[] = $contact;
-        }
-        $person->contacts()->saveMany($contactList);
+        // $contactList = [];
+        // foreach ($request->contactList as $key => $item) {
+        //     $contact = new Contact();
+        //     $contact->contact_type_id = $item["contactTypeId"];
+        //     $contact->contact_value = $item["value"];
+        //     $contact->person_id = $person->id;
+        //     $contactList[] = $contact;
+        // }
+        // $person->contacts()->saveMany($contactList);
 
         return response(["person" => $person], 200);
-    }
-
-    public function update(Request $request)
-    {
     }
 
     public function byId($id)

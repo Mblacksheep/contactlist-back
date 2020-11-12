@@ -11,6 +11,12 @@ class ContactController extends Controller
 
     public function create(Request $request)
     {
+        if ($request->id) {
+            $contact = Contact::find($request->id);
+        } else {
+            $contact = new Contact();
+        }
+
         $contact = new Contact();
         $contact->contact_type_id = $request["contactTypeId"];
         $contact->contact_value = $request["value"];
@@ -18,10 +24,6 @@ class ContactController extends Controller
         $contact->save();
 
         return response(["contact" => $contact], 200);
-    }
-
-    public function update(Request $request)
-    {
     }
 
     public function getById(Request $request)
