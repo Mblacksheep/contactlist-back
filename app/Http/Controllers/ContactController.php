@@ -35,9 +35,9 @@ class ContactController extends Controller
 
     public function byPerson(Request $request)
     {
-        $contact = Contact::with('contactType')->where("person_id", $request->personId);
+        $contactList = Contact::with('type')->where("person_id", $request->personId)->get();
 
-        return response(["contactList" => $contact], 200);
+        return response(["contactList" => $contactList], 200);
     }
 
     public function all()
