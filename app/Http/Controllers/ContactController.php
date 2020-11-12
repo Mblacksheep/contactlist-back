@@ -35,7 +35,7 @@ class ContactController extends Controller
 
     public function getAll()
     {
-        $contact = Contact::with('contactType')->get();
+        $contact = Contact::with('contactType')->orderBy('name', 'ASC')->get();
 
         return response(["contactList" => $contact], 200);
     }
