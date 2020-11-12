@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BalancedBracketsController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ContactTypeController;
 use App\Http\Controllers\PersonController;

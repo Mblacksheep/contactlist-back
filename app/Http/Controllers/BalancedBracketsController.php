@@ -8,7 +8,7 @@ class BalancedBracketsController extends Controller
 {
     public function balancedBrackets(Request $request)
     {
-        $string = $request["value"];
+        $string = $request->value;
         $brackets = ["[]", "{}", "()"];
 
         if (strlen($string) % 2 || $string == null) {
