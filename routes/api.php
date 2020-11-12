@@ -15,4 +15,6 @@ Route::get('contact/{id}',  [ContactController::class, 'byId']);
 Route::post('contact/create',  [ContactController::class, 'create']);
 Route::post('contact/delete',  [ContactController::class, 'delete']);
 
+Route::get('contact-type',  [ContactController::class, 'all']);
+
 Route::post('balanced-brackets',  [BalancedBracketsController::class, 'balancedBrackets']);
