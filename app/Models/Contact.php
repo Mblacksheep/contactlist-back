@@ -14,6 +14,11 @@ class Contact extends Model
         'contact_value'
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function type()
     {
         return $this->hasOne(ContactType::class, 'id', 'contact_type_id');
