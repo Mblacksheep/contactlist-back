@@ -26,14 +26,21 @@ class ContactController extends Controller
         return response(["contact" => $contact], 200);
     }
 
-    public function getById(Request $request)
+    public function byId(Request $request)
     {
         $contact = Contact::with('contactType')->find($request->id);
 
         return response(["contact" => $contact], 200);
     }
 
-    public function getAll()
+    public function byPerson(Request $request)
+    {
+        $contact = Contact::with('contactType')->where("person_id", $request->personId);
+
+        return response(["contactList" => $contact], 200);
+    }
+
+    public function all()
     {
         $contact = Contact::with('contactType')->orderBy('name', 'ASC')->get();
 

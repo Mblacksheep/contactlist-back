@@ -12,6 +12,7 @@ Route::post('person/delete',  [PersonController::class, 'delete']);
 
 Route::get('contact',  [ContactController::class, 'all']);
 Route::get('contact/{id}',  [ContactController::class, 'byId']);
+Route::post('contact/list',  [ContactController::class, 'byPerson']);
 Route::post('contact/create',  [ContactController::class, 'create']);
 Route::post('contact/delete',  [ContactController::class, 'delete']);
 
